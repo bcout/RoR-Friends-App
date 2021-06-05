@@ -4426,3 +4426,810 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.0ms | Allocations: 3713)
 
 
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToFriends (20210605170517)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "friends" ADD "user_id" integer[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_friends_on_user_id" ON "friends" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210605170517"]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-06-05 13:06:02 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 220)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 11.1ms | Allocations: 597)
+  Rendered layout layouts/application.html.erb (Duration: 106.9ms | Allocations: 6526)
+Completed 200 OK in 145ms (Views: 124.6ms | ActiveRecord: 0.0ms | Allocations: 9181)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:07:01 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 5838)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.7ms | Allocations: 219)
+  Rendered layout layouts/application.html.erb (Duration: 21.6ms | Allocations: 9119)
+Completed 200 OK in 34ms (Views: 22.6ms | ActiveRecord: 0.8ms | Allocations: 11116)
+
+
+Started DELETE "/friends/1" for 127.0.0.1 at 2021-06-05 13:07:06 -0400
+Processing by FriendsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:62:in `set_friend'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+  [1m[36mFriend Destroy (0.2ms)[0m  [1m[31mDELETE FROM "friends" WHERE "friends"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 23ms (ActiveRecord: 12.0ms | Allocations: 5239)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:07:06 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.7ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 922)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.9ms | Allocations: 213)
+  Rendered layouts/_alerts.html.erb (Duration: 6.8ms | Allocations: 137)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 4557)
+Completed 200 OK in 35ms (Views: 31.1ms | ActiveRecord: 0.7ms | Allocations: 4963)
+
+
+Started DELETE "/friends/2" for 127.0.0.1 at 2021-06-05 13:07:09 -0400
+Processing by FriendsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:62:in `set_friend'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+  [1m[36mFriend Destroy (2.3ms)[0m  [1m[31mDELETE FROM "friends" WHERE "friends"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 31ms (ActiveRecord: 11.9ms | Allocations: 4730)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:07:09 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 819)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.6ms | Allocations: 219)
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered layout layouts/application.html.erb (Duration: 18.6ms | Allocations: 4235)
+Completed 200 OK in 20ms (Views: 19.2ms | ActiveRecord: 0.2ms | Allocations: 4638)
+
+
+Started DELETE "/friends/3" for 127.0.0.1 at 2021-06-05 13:07:11 -0400
+Processing by FriendsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"3"}
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:62:in `set_friend'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+  [1m[36mFriend Destroy (0.6ms)[0m  [1m[31mDELETE FROM "friends" WHERE "friends"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friends_controller.rb:52:in `destroy'
+Redirected to http://localhost:3000/friends
+Completed 302 Found in 19ms (ActiveRecord: 6.0ms | Allocations: 4133)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:07:11 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 700)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.8ms | Allocations: 213)
+  Rendered layouts/_alerts.html.erb (Duration: 0.2ms | Allocations: 43)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 4109)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.2ms | Allocations: 4513)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-06-05 13:07:15 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.6ms | Allocations: 223)
+  Rendered devise/shared/_links.html.erb (Duration: 4.0ms | Allocations: 527)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 47.9ms | Allocations: 6412)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.8ms | Allocations: 196)
+  Rendered layout layouts/application.html.erb (Duration: 56.0ms | Allocations: 9629)
+Completed 200 OK in 71ms (Views: 61.8ms | ActiveRecord: 0.8ms | Allocations: 14858)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-06-05 13:07:18 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 218)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.8ms | Allocations: 1635)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 1.1ms | Allocations: 196)
+  Rendered layout layouts/application.html.erb (Duration: 22.1ms | Allocations: 4916)
+Completed 200 OK in 31ms (Views: 24.4ms | ActiveRecord: 0.0ms | Allocations: 6336)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-06-05 13:07:21 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 104)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1075)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 1.0ms | Allocations: 196)
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 4394)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 4908)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-06-05 13:07:24 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 150)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 14.5ms | Allocations: 1014)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 1.4ms | Allocations: 187)
+  Rendered layout layouts/application.html.erb (Duration: 38.5ms | Allocations: 4322)
+Completed 200 OK in 46ms (Views: 39.5ms | ActiveRecord: 0.0ms | Allocations: 4901)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2021-06-05 13:07:25 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"temp@temp.temp", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "temp@temp.temp"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 412ms (ActiveRecord: 0.5ms | Allocations: 4333)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-05 13:07:26 -0400
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 4.3ms | Allocations: 1101)
+  Rendered layouts/_alerts.html.erb (Duration: 0.2ms | Allocations: 42)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 4341)
+Completed 200 OK in 18ms (Views: 14.5ms | ActiveRecord: 0.2ms | Allocations: 4730)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2021-06-05 13:07:28 -0400
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 43)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1836)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.3ms | Allocations: 186)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 5129)
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.2ms | Allocations: 6777)
+
+
+Started DELETE "/users" for 127.0.0.1 at 2021-06-05 13:07:31 -0400
+Processing by Devise::RegistrationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 45ms (ActiveRecord: 10.9ms | Allocations: 6228)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-05 13:07:31 -0400
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.5ms | Allocations: 232)
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 3473)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.0ms | Allocations: 3858)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-06-05 13:07:35 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 103)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1066)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.5ms | Allocations: 189)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4376)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 4890)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-06-05 13:07:41 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"temp@temp.temp", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "temp@temp.temp"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "temp@temp.temp"], ["encrypted_password", "$2a$12$oSfawOO3CpLME9TzghMAo.bwR1ixue8/8hiA3VauJorcSBYSWqqmm"], ["created_at", "2021-06-05 17:07:41.851522"], ["updated_at", "2021-06-05 17:07:41.851522"]]
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 410ms (ActiveRecord: 12.3ms | Allocations: 8374)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-05 13:07:41 -0400
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 12.9ms | Allocations: 1070)
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered layout layouts/application.html.erb (Duration: 28.8ms | Allocations: 4669)
+Completed 200 OK in 31ms (Views: 29.1ms | ActiveRecord: 0.7ms | Allocations: 5058)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:07:47 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 705)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 6.4ms | Allocations: 1060)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 4864)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.6ms | Allocations: 5266)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:08:16 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 700)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 3.6ms | Allocations: 1054)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 4849)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.2ms | Allocations: 5251)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:08:16 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (Duration: 3.4ms | Allocations: 1886)
+  Rendered friends/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2241)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 2.8ms | Allocations: 1063)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 6400)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.1ms | Allocations: 6926)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:09:03 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (Duration: 3.4ms | Allocations: 1925)
+  Rendered friends/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2276)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 4.8ms | Allocations: 1375)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 7135)
+Completed 200 OK in 18ms (Views: 16.9ms | ActiveRecord: 0.3ms | Allocations: 8343)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:09:07 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 971)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.5ms | Allocations: 219)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4301)
+Completed 200 OK in 13ms (Views: 9.6ms | ActiveRecord: 0.3ms | Allocations: 4775)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:10:08 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (Duration: 1.5ms | Allocations: 1605)
+  Rendered friends/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1934)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1999)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3181)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_with(model: friend) do |form| %>
+  <% if friend.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+
+      <ul>
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :twitter %>
+    <%= form.text_field :twitter, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, class:"form-control" %>
+  </div>
+  <% = current_user %>
+
+  <div class="actions">
+    <br/>
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+):
+1:    <%= form_with(model: friend) do |form| %>
+2:      <% if friend.errors.any? %>
+3:        <div id="error_explanation">
+4:          <h2><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
+5:    
+6:          <ul>
+7:            <% friend.errors.each do |error| %>
+8:              <li><%= error.full_message %></li>
+9:            <% end %>
+10:          </ul>
+11:        </div>
+12:      <% end %>
+13:    
+14:      <div class="field form-group">
+15:        <%= form.label :first_name %>
+16:        <%= form.text_field :first_name, class:"form-control" %>
+17:      </div>
+18:    
+19:      <div class="field form-group">
+20:        <%= form.label :last_name %>
+21:        <%= form.text_field :last_name, class:"form-control" %>
+22:      </div>
+23:    
+24:      <div class="field form-group">
+25:        <%= form.label :email %>
+26:        <%= form.text_field :email, class:"form-control" %>
+27:      </div>
+28:    
+29:      <div class="field form-group">
+30:        <%= form.label :phone %>
+31:        <%= form.text_field :phone, class:"form-control" %>
+32:      </div>
+33:    
+34:      <div class="field form-group">
+35:        <%= form.label :twitter %>
+36:        <%= form.text_field :twitter, class:"form-control" %>
+37:      </div>
+38:    
+39:      <div class="field form-group">
+40:        <%= form.label :user_id %>
+41:        <%= form.text_field :user_id, class:"form-control" %>
+42:      </div>
+43:      <% = current_user %>
+44:    
+45:      <div class="actions">
+46:        <br/>
+47:        <%= form.submit class:"btn btn-primary" %>
+48:      </div>
+49:    <% end %>
+  
+app/views/friends/_form.html.erb:43: syntax error, unexpected '=', expecting `end'
+app/views/friends/_form.html.erb:51: syntax error, unexpected `end', expecting end-of-input
+app/views/friends/_form.html.erb:43: syntax error, unexpected '=', expecting `end'
+app/views/friends/_form.html.erb:51: syntax error, unexpected `end', expecting end-of-input
+app/views/friends/_form.html.erb:43: syntax error, unexpected '=', expecting `end'
+app/views/friends/_form.html.erb:51: syntax error, unexpected `end', expecting end-of-input
+app/views/friends/_form.html.erb:43: syntax error, unexpected '=', expecting `end'
+app/views/friends/_form.html.erb:51: syntax error, unexpected `end', expecting end-of-input
+app/views/friends/_form.html.erb:43: syntax error, unexpected '=', expecting `end'
+app/views/friends/_form.html.erb:51: syntax error, unexpected `end', expecting end-of-input
+app/views/friends/_form.html.erb:43: syntax error, unexpected '=', expecting `end'
+app/views/friends/_form.html.erb:51: syntax error, unexpected `end', expecting end-of-input
+app/views/friends/new.html.erb:4
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:10:31 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:43
+  Rendered friends/_form.html.erb (Duration: 5.8ms | Allocations: 3055)
+  Rendered friends/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3410)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 1.2ms | Allocations: 497)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 7521)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.1ms | Allocations: 8859)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:10:58 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:43
+  Rendered friends/_form.html.erb (Duration: 10.9ms | Allocations: 2976)
+  Rendered friends/new.html.erb within layouts/application (Duration: 14.4ms | Allocations: 3326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.9ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 7302)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.4ms | Allocations: 8505)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:11:54 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:41
+  Rendered friends/_form.html.erb (Duration: 8.9ms | Allocations: 2794)
+  Rendered friends/new.html.erb within layouts/application (Duration: 9.8ms | Allocations: 3148)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.7ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 7134)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.1ms | Allocations: 8346)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:12:01 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 972)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 6.7ms | Allocations: 1060)
+  Rendered layout layouts/application.html.erb (Duration: 22.9ms | Allocations: 5131)
+Completed 200 OK in 28ms (Views: 24.5ms | ActiveRecord: 0.7ms | Allocations: 5662)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:12:02 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:41
+  Rendered friends/_form.html.erb (Duration: 6.5ms | Allocations: 2352)
+  Rendered friends/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2464)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 1.3ms | Allocations: 176)
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 5757)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.1ms | Allocations: 6164)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:12:39 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:41
+  Rendered friends/_form.html.erb (Duration: 25.6ms | Allocations: 8219)
+  Rendered friends/new.html.erb within layouts/application (Duration: 27.3ms | Allocations: 8569)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 1.4ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 48.0ms | Allocations: 12446)
+Completed 200 OK in 50ms (Views: 49.0ms | ActiveRecord: 0.3ms | Allocations: 13650)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:13:14 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:41
+  Rendered friends/_form.html.erb (Duration: 9.5ms | Allocations: 2795)
+  Rendered friends/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 3145)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 2.1ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 7121)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.2ms | Allocations: 8324)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:13:34 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:41
+  Rendered friends/_form.html.erb (Duration: 13.3ms | Allocations: 2795)
+  Rendered friends/new.html.erb within layouts/application (Duration: 15.0ms | Allocations: 3145)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.9ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 7121)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.2ms | Allocations: 8324)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:13:43 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:40
+  Rendered friends/_form.html.erb (Duration: 13.6ms | Allocations: 2640)
+  Rendered friends/new.html.erb within layouts/application (Duration: 14.7ms | Allocations: 2991)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 2.3ms | Allocations: 494)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | Allocations: 6967)
+Completed 200 OK in 28ms (Views: 26.7ms | ActiveRecord: 0.3ms | Allocations: 8171)
+
+
+Started POST "/friends" for 127.0.0.1 at 2021-06-05 13:14:20 -0400
+Processing by FriendsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "friend"=>{"first_name"=>"Friend", "last_name"=>"A", "email"=>"a@email.com", "phone"=>"111 222 3333", "twitter"=>"@friendA", "user_id"=>"3"}, "commit"=>"Create Friend"}
+[31mUnpermitted parameter: :user_id[0m
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:40
+  Rendered friends/_form.html.erb (Duration: 11.1ms | Allocations: 2735)
+  Rendered friends/new.html.erb within layouts/application (Duration: 12.1ms | Allocations: 2847)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.6ms | Allocations: 176)
+  Rendered layout layouts/application.html.erb (Duration: 24.8ms | Allocations: 6063)
+Completed 422 Unprocessable Entity in 54ms (Views: 26.1ms | ActiveRecord: 0.2ms | Allocations: 13934)
+
+
+Started POST "/friends" for 127.0.0.1 at 2021-06-05 13:17:17 -0400
+Processing by FriendsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "friend"=>{"first_name"=>"Friend", "last_name"=>"A", "email"=>"a@email.com", "phone"=>"111 222 3333", "twitter"=>"@friendA", "user_id"=>"3"}, "commit"=>"Create Friend"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/friends_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+  [1m[36mFriend Create (2.8ms)[0m  [1m[32mINSERT INTO "friends" ("first_name", "last_name", "email", "phone", "twitter", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Friend"], ["last_name", "A"], ["email", "a@email.com"], ["phone", "111 222 3333"], ["twitter", "@friendA"], ["created_at", "2021-06-05 17:17:17.260912"], ["updated_at", "2021-06-05 17:17:17.260912"], ["user_id", 3]]
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/friends/8
+Completed 302 Found in 83ms (ActiveRecord: 17.2ms | Allocations: 16320)
+
+
+Started GET "/friends/8" for 127.0.0.1 at 2021-06-05 13:17:17 -0400
+Processing by FriendsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:62:in `set_friend'
+  Rendering layout layouts/application.html.erb
+  Rendering friends/show.html.erb within layouts/application
+  Rendered friends/show.html.erb within layouts/application (Duration: 1.5ms | Allocations: 317)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 11.0ms | Allocations: 1121)
+  Rendered layouts/_alerts.html.erb (Duration: 3.8ms | Allocations: 134)
+  Rendered layout layouts/application.html.erb (Duration: 28.5ms | Allocations: 4864)
+Completed 200 OK in 36ms (Views: 28.8ms | ActiveRecord: 1.1ms | Allocations: 6192)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:17:22 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1108)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 4.0ms | Allocations: 1060)
+  Rendered layout layouts/application.html.erb (Duration: 16.7ms | Allocations: 5267)
+Completed 200 OK in 19ms (Views: 17.1ms | ActiveRecord: 0.5ms | Allocations: 5798)
+
+
+Started GET "/friends/new" for 127.0.0.1 at 2021-06-05 13:17:24 -0400
+Processing by FriendsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/new.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/friends/_form.html.erb:40
+  Rendered friends/_form.html.erb (Duration: 10.7ms | Allocations: 2210)
+  Rendered friends/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 2322)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 1.2ms | Allocations: 176)
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | Allocations: 5592)
+Completed 200 OK in 25ms (Views: 24.1ms | ActiveRecord: 0.2ms | Allocations: 5999)
+
+
+Started POST "/friends" for 127.0.0.1 at 2021-06-05 13:17:46 -0400
+Processing by FriendsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "friend"=>{"first_name"=>"Friend", "last_name"=>"B", "email"=>"b@email.com", "phone"=>"222 333 4444", "twitter"=>"@friendB", "user_id"=>"3"}, "commit"=>"Create Friend"}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+  [1m[36mFriend Create (1.2ms)[0m  [1m[32mINSERT INTO "friends" ("first_name", "last_name", "email", "phone", "twitter", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Friend"], ["last_name", "B"], ["email", "b@email.com"], ["phone", "222 333 4444"], ["twitter", "@friendB"], ["created_at", "2021-06-05 17:17:46.670168"], ["updated_at", "2021-06-05 17:17:46.670168"], ["user_id", 3]]
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friends_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/friends/9
+Completed 302 Found in 36ms (ActiveRecord: 7.5ms | Allocations: 5722)
+
+
+Started GET "/friends/9" for 127.0.0.1 at 2021-06-05 13:17:46 -0400
+Processing by FriendsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:62:in `set_friend'
+  Rendering layout layouts/application.html.erb
+  Rendering friends/show.html.erb within layouts/application
+  Rendered friends/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 104)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 6.4ms | Allocations: 1054)
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 4352)
+Completed 200 OK in 25ms (Views: 18.6ms | ActiveRecord: 0.5ms | Allocations: 5300)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:17:48 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 922)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 4.0ms | Allocations: 1054)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 5071)
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.5ms | Allocations: 5473)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:17:49 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 922)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 5.7ms | Allocations: 1054)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 5071)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.3ms | Allocations: 5472)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-06-05 13:17:51 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms | Allocations: 1996)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-05 13:17:51 -0400
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 107)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 0.6ms | Allocations: 243)
+  Rendered layouts/_alerts.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 3565)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 4532)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-06-05 13:17:53 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 215)
+  Rendered devise/shared/_links.html.erb (Duration: 2.1ms | Allocations: 490)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.6ms | Allocations: 2276)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_header.html.erb (Duration: 4.0ms | Allocations: 196)
+  Rendered layout layouts/application.html.erb (Duration: 25.5ms | Allocations: 5566)
+Completed 200 OK in 35ms (Views: 32.4ms | ActiveRecord: 0.0ms | Allocations: 7097)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-06-05 13:18:11 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"temp2@temp2.temp2", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "temp2@temp2.temp2"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "temp2@temp2.temp2"], ["encrypted_password", "$2a$12$Ruw.GMLm8wqscQbTgjyce.NKr01UF1z5lF8iiy1aVoCXRchRcAyH6"], ["created_at", "2021-06-05 17:18:11.443476"], ["updated_at", "2021-06-05 17:18:11.443476"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 379ms (ActiveRecord: 5.6ms | Allocations: 8895)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-05 13:18:11 -0400
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 3.8ms | Allocations: 1078)
+  Rendered layouts/_alerts.html.erb (Duration: 0.2ms | Allocations: 43)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 4314)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.2ms | Allocations: 4706)
+
+
+Started GET "/friends" for 127.0.0.1 at 2021-06-05 13:18:14 -0400
+Processing by FriendsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering friends/index.html.erb within layouts/application
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT "friends".* FROM "friends"[0m
+  ↳ app/views/friends/index.html.erb:17
+  Rendered friends/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 930)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/home/_header.html.erb:16
+  Rendered home/_header.html.erb (Duration: 3.6ms | Allocations: 1060)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 5098)
+Completed 200 OK in 19ms (Views: 17.3ms | ActiveRecord: 0.5ms | Allocations: 5501)
+
+
